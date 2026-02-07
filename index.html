@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RED ZONE - Anime Fitness Revolution</title>
+    <meta name="description" content="Transform your body with RED ZONE - The ultimate anime fitness training system">
+    <meta name="author" content="Kashif Khokhar">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-red: #ff0033;
+            --dark-red: #990022;
+            --black: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --light-gray: #888;
+            --white: #ffffff;
+            --gold: #ffd700;
+            --neon-red: #ff1744;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(255,0,51,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(153,0,34,0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 40%, rgba(255,23,68,0.1) 0%, transparent 50%);
+            animation: bgPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Grid Lines */
+        .grid-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(255,0,51,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,0,51,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(180deg, rgba(10,10,10,0.95) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,0,51,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary-red), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 30px rgba(255,0,51,0.5);
+        }
+
+        .owner-tag {
+            font-size: 0.8rem;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .owner-name {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 20px 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,0,51,0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: heroGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, var(--white) 0%, var(--primary-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titlePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,0,51,0.5); }
+            50% { text-shadow: 0 0 40px rgba(255,0,51,0.8), 0 0 60px rgba(255,0,51,0.4); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--light-gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(45deg, var(--primary-red), var(--dark-red));
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: 2px solid var(--primary-red);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255,0,51,0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255,0,51,0.6);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Login Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid var(--primary-red);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255,0,51,0.3);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,0,51,0.3);
+            border-radius: 8px;
+            color: var(--white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-red);
+            box-shadow: 0 0 15px rgba(255,0,51,0.3);
+        }
+
+        .gender-select {
+            display: flex;
+            gap: 20px;
+        }
+
+        .gender-option {
+            flex: 1;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,0,51,0.3);
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gender-option:hover, .gender-option.selected {
+            border-color: var(--primary-red);
+            background: rgba(255,0,51,0.1);
+            transform: scale(1.05);
+        }
+
+        .gender-option i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Character Selection */
+        .character-section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .character-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: linear-gradient(45deg, var(--white), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-gray);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .rank-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .rank-tab {
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,0,51,0.3);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .rank-tab:hover, .rank-tab.active {
+            background: var(--primary-red);
+            border-color: var(--primary-red);
+            box-shadow: 0 0 20px rgba(255,0,51,0.5);
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .character-card {
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid rgba(255,0,51,0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-red);
+            box-shadow: 0 20px 40px rgba(255,0,51,0.3);
+        }
+
+        .character-card.locked {
+            opacity: 0.6;
+            filter: grayscale(0.8);
+        }
+
+        .character-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(255,0,51,0.2) 100%);
+        }
+
+        .character-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .character-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .character-rank {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255,0,51,0.2);
+            border: 1px solid var(--primary-red);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-red);
+        }
+
+        .character-rank.sss {
+            background: rgba(255,215,0,0.2);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--primary-red);
+        }
+
+        .lock-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Training Section */
+        .training-section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .training-section.active {
+            display: block;
+        }
+
+        .character-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(145deg, rgba(255,0,51,0.1), transparent);
+            border-radius: 15px;
+            border: 1px solid rgba(255,0,51,0.3);
+        }
+
+        .character-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--dark-red), var(--primary-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            border: 5px solid var(--primary-red);
+            box-shadow: 0 0 30px rgba(255,0,51,0.5);
+            animation: avatarPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes avatarPulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(255,0,51,0.5); }
+            50% { box-shadow: 0 0 50px rgba(255,0,51,0.8); }
+        }
+
+        .character-stats h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-red), var(--gold));
+            border-radius: 5px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Days Grid */
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .day-card {
+            aspect-ratio: 1;
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid rgba(255,0,51,0.2);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card:hover:not(.locked):not(.completed) {
+            border-color: var(--primary-red);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,0,51,0.3);
+        }
+
+        .day-card.locked {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .day-card.completed {
+            border-color: #00ff88;
+            background: rgba(0,255,136,0.1);
+        }
+
+        .day-card.current {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255,215,0,0.3);
+            animation: currentPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes currentPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+            50% { box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+        }
+
+        .day-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .day-status {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--light-gray);
+        }
+
+        /* Exercise Modal */
+        .exercise-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 3000;
+            overflow-y: auto;
+        }
+
+        .exercise-modal.active {
+            display: block;
+        }
+
+        .exercise-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        .exercise-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .exercise-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .day-progress {
+            color: var(--light-gray);
+            font-size: 1.1rem;
+        }
+
+        .exercise-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .exercise-item {
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid rgba(255,0,51,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-item:hover {
+            border-color: var(--primary-red);
+            transform: translateX(10px);
+        }
+
+        .exercise-item.completed {
+            border-color: #00ff88;
+            opacity: 0.7;
+        }
+
+        .exercise-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .exercise-info {
+            flex: 1;
+        }
+
+        .exercise-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .exercise-details {
+            color: var(--light-gray);
+            font-size: 0.95rem;
+        }
+
+        .exercise-action {
+            padding: 12px 30px;
+            background: linear-gradient(45deg, var(--primary-red), var(--dark-red));
+            border: none;
+            border-radius: 8px;
+            color: var(--white);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-action:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,0,51,0.4);
+        }
+
+        .exercise-action:disabled {
+            background: #333;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Diet Plan Section */
+        .diet-section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .diet-section.active {
+            display: block;
+        }
+
+        .diet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .diet-card {
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid rgba(255,0,51,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .diet-card:hover {
+            border-color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .diet-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .diet-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-red);
+        }
+
+        .diet-content {
+            color: var(--light-gray);
+            line-height: 1.6;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: none;
+            padding: 40px 20px;
+        }
+
+        .profile-section.active {
+            display: block;
+        }
+
+        .profile-card {
+            background: linear-gradient(145deg, var(--dark-gray), #0f0f0f);
+            border: 2px solid rgba(255,0,51,0.3);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto 30px;
+            border: 5px solid var(--primary-red);
+            box-shadow: 0 0 40px rgba(255,0,51,0.5);
+        }
+
+        .profile-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .profile-rank {
+            display: inline-block;
+            padding: 10px 25px;
+            background: rgba(255,0,51,0.2);
+            border: 2px solid var(--primary-red);
+            border-radius: 30px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Navigation */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(0deg, rgba(10,10,10,0.95) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255,0,51,0.3);
+            padding: 15px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1000;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--light-gray);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary-red);
+            transform: translateY(-5px);
+        }
+
+        .nav-icon {
+            font-size: 1.5rem;
+        }
+
+        .nav-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .character-header { flex-direction: column; text-align: center; }
+            .profile-stats { grid-template-columns: 1fr; }
+            .days-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="grid-lines"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">RED ZONE</div>
+        <div class="owner-tag">Created by <span class="owner-name">Kashif Khokhar</span></div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="container hero-section" id="heroSection">
+        <div class="hero">
+            <h1>RED ZONE</h1>
+            <p>Enter the ultimate anime fitness training system. Transform your body, unlock your power, become the strongest version of yourself.</p>
+            <button class="cta-button" onclick="showLogin()">Enter The Zone</button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Your Hunter Profile</h2>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Real Name</label>
+                    <input type="text" id="realName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label>Hunter Name</label>
+                    <input type="text" id="hunterName" placeholder="Your legendary name" required>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" id="age" placeholder="Your age" min="13" max="80" required>
+                </div>
+                <div class="form-group">
+                    <label>Weight (kg)</label>
+                    <input type="number" id="weight" placeholder="Current weight" min="30" max="200" required>
+                </div>
+                <div class="form-group">
+                    <label>Height (cm)</label>
+                    <input type="number" id="height" placeholder="Your height" min="100" max="250" required>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="gender-select">
+                        <div class="gender-option" onclick="selectGender('male')">
+                            <span style="font-size: 2rem;">♂️</span>
+                            <div>Male</div>
+                        </div>
+                        <div class="gender-option" onclick="selectGender('female')">
+                            <span style="font-size: 2rem;">♀️</span>
+                            <div>Female</div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 20px;">Begin Training</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Character Selection -->
+    <div class="container character-section" id="characterSection">
+        <h2 class="section-title">Choose Your Character</h2>
+        <p class="section-subtitle">Select a trainer to begin your 90-day transformation</p>
+        
+        <div class="rank-tabs">
+            <div class="rank-tab active" onclick="filterRank('all')">All</div>
+            <div class="rank-tab" onclick="filterRank('normal')">Normal Rank</div>
+            <div class="rank-tab" onclick="filterRank('sss')">SSS-Rank</div>
+        </div>
+
+        <div class="characters-grid" id="charactersGrid"></div>
+    </div>
+
+    <!-- Training Section -->
+    <div class="container training-section" id="trainingSection">
+        <div class="character-header">
+            <div class="character-avatar" id="trainingAvatar">🗡️</div>
+            <div class="character-stats">
+                <h2 id="trainingCharName">Character Name</h2>
+                <div style="color: var(--light-gray); margin-bottom: 10px;" id="trainingCharRank">SSS-Rank</div>
+                <div style="color: var(--primary-red); font-size: 1.1rem;" id="currentDay">Day 1 of 90</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="dayProgress" style="width: 1%"></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-family: 'Orbitron', sans-serif; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">Training Schedule</h3>
+        <div class="days-grid" id="daysGrid"></div>
+    </div>
+
+    <!-- Exercise Modal -->
+    <div class="exercise-modal" id="exerciseModal">
+        <div class="exercise-container">
+            <div class="exercise-header">
+                <h2 id="exerciseDayTitle">Day 1 Training</h2>
+                <div class="day-progress" id="exerciseProgress">Exercise 1 of 10</div>
+            </div>
+            <div class="exercise-list" id="exerciseList"></div>
+            <button class="cta-button" style="margin-top: 30px; width: 100%;" onclick="closeExerciseModal()">Back to Schedule</button>
+        </div>
+    </div>
+
+    <!-- Diet Section -->
+    <div class="container diet-section" id="dietSection">
+        <h2 class="section-title">Nutrition Protocol</h2>
+        <p class="section-subtitle">Personalized diet plan based on your stats</p>
+        <div class="diet-grid" id="dietGrid"></div>
+    </div>
+
+    <!-- Profile Section -->
+    <div class="container profile-section" id="profileSection">
+        <div class="profile-card">
+            <div class="profile-avatar" id="profileAvatar">👤</div>
+            <div class="profile-name" id="profileName">Hunter Name</div>
+            <div class="profile-rank" id="profileRank">E-Rank Hunter</div>
+            <div style="color: var(--light-gray); margin-bottom: 20px;" id="profileStatsText">Age: 20 | Weight: 70kg | Height: 175cm</div>
+            
+            <div class="profile-stats">
+                <div class="stat-box">
+                    <div class="stat-value" id="statDays">0</div>
+                    <div class="stat-label">Days Completed</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="statExercises">0</div>
+                    <div class="stat-label">Exercises Done</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="statCharacters">0</div>
+                    <div class="stat-label">Characters</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-bar" id="navBar" style="display: none;">
+        <div class="nav-item active" onclick="showSection('training')">
+            <span class="nav-icon">⚔️</span>
+            <span class="nav-label">Train</span>
+        </div>
+        <div class="nav-item" onclick="showSection('characters')">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Characters</span>
+        </div>
+        <div class="nav-item" onclick="showSection('diet')">
+            <span class="nav-icon">🥗</span>
+            <span class="nav-label">Diet</span>
+        </div>
+        <div class="nav-item" onclick="showSection('profile')">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Profile</span>
+        </div>
+    </nav>
+
+    <script>
+        // Data Structure
+        const characters = {
+            male: {
+                normal: [
+                    { id: 'yuji', name: 'Yuji Itadori', emoji: '👊', rank: 'Normal', anime: 'JJK' },
+                    { id: 'naruto', name: 'Naruto Uzumaki', emoji: '🍥', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'sasuke', name: 'Sasuke Uchiha', emoji: '⚡', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'vegeta', name: 'Vegeta', emoji: '👑', rank: 'Normal', anime: 'DBZ' },
+                    { id: 'baki', name: 'Baki Hanma', emoji: '💪', rank: 'Normal', anime: 'Baki' },
+                    { id: 'muzan', name: 'Muzan Kibutsuji', emoji: '🩸', rank: 'Normal', anime: 'Demon Slayer' },
+                    { id: 'itachi', name: 'Itachi Uchiha', emoji: '👁️', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'luffy', name: 'Monkey D. Luffy', emoji: '🏴‍☠️', rank: 'Normal', anime: 'One Piece' },
+                    { id: 'zoro', name: 'Roronoa Zoro', emoji: '⚔️', rank: 'Normal', anime: 'One Piece' },
+                    { id: 'deku', name: 'Izuku Midoriya', emoji: '💥', rank: 'Normal', anime: 'MHA' }
+                ],
+                sss: [
+                    { id: 'madara', name: 'Madara Uchiha', emoji: '👹', rank: 'SSS', anime: 'Naruto' },
+                    { id: 'jinwoo', name: 'Sung Jinwoo', emoji: '👑', rank: 'SSS', anime: 'Solo Leveling' },
+                    { id: 'toji', name: 'Toji Fushiguro', emoji: '🗡️', rank: 'SSS', anime: 'JJK' },
+                    { id: 'gojo', name: 'Satoru Gojo', emoji: '👁️', rank: 'SSS', anime: 'JJK' },
+                    { id: 'sukuna', name: 'Ryomen Sukuna', emoji: '👺', rank: 'SSS', anime: 'JJK' },
+                    { id: 'goku', name: 'Goku', emoji: '🐉', rank: 'SSS', anime: 'DBZ' },
+                    { id: 'eren', name: 'Eren Yeager', emoji: '⚔️', rank: 'SSS', anime: 'AOT' },
+                    { id: 'yujiro', name: 'Yujiro Hanma', emoji: '👹', rank: 'SSS', anime: 'Baki' },
+                    { id: 'kokushibo', name: 'Kokushibo', emoji: '🌙', rank: 'SSS', anime: 'Demon Slayer' },
+                    { id: 'aizen', name: 'Sosuke Aizen', emoji: '💠', rank: 'SSS', anime: 'Bleach' }
+                ]
+            },
+            female: {
+                normal: [
+                    { id: 'sakura', name: 'Sakura Haruno', emoji: '🌸', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'ochaco', name: 'Ochaco Uraraka', emoji: '☄️', rank: 'Normal', anime: 'MHA' },
+                    { id: 'nezuko', name: 'Nezuko Kamado', emoji: '🎋', rank: 'Normal', anime: 'Demon Slayer' },
+                    { id: 'nami', name: 'Nami', emoji: '⚡', rank: 'Normal', anime: 'One Piece' },
+                    { id: 'hinata', name: 'Hinata Hyuga', emoji: '👁️', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'tenten', name: 'Tenten', emoji: '🎯', rank: 'Normal', anime: 'Naruto' },
+                    { id: 'tsuyu', name: 'Tsuyu Asui', emoji: '🐸', rank: 'Normal', anime: 'MHA' },
+                    { id: 'maki', name: 'Maki Zenin', emoji: '🔥', rank: 'Normal', anime: 'JJK' },
+                    { id: 'kanao', name: 'Kanao Tsuyuri', emoji: '🦋', rank: 'Normal', anime: 'Demon Slayer' },
+                    { id: 'momo', name: 'Momo Yaoyorozu', emoji: '✨', rank: 'Normal', anime: 'MHA' }
+                ],
+                sss: [
+                    { id: 'mikasa', name: 'Mikasa Ackerman', emoji: '⚔️', rank: 'SSS', anime: 'AOT' },
+                    { id: 'nobara', name: 'Nobara Kugisaki', emoji: '🔨', rank: 'SSS', anime: 'JJK' },
+                    { id: 'erza', name: 'Erza Scarlet', emoji: '⚔️', rank: 'SSS', anime: 'Fairy Tail' },
+                    { id: 'rias', name: 'Rias Gremory', emoji: '🔴', rank: 'SSS', anime: 'High School DxD' },
+                    { id: 'tatsumaki', name: 'Tatsumaki', emoji: '🌪️', rank: 'SSS', anime: 'OPM' },
+                    { id: 'kaguya', name: 'Kaguya Otsutsuki', emoji: '🌙', rank: 'SSS', anime: 'Naruto' },
+                    { id: 'mereoleona', name: 'Mereoleona', emoji: '🔥', rank: 'SSS', anime: 'Black Clover' },
+                    { id: 'esdeath', name: 'Esdeath', emoji: '❄️', rank: 'SSS', anime: 'Akame ga Kill' },
+                    { id: 'zerotwo', name: 'Zero Two', emoji: '💕', rank: 'SSS', anime: 'Darling in the Franxx' },
+                    { id: 'saber', name: 'Saber', emoji: '⚔️', rank: 'SSS', anime: 'Fate' }
+                ]
+            }
+        };
+
+        // Generate 90 days of exercises
+        function generateExercises(characterName, day) {
+            const exercises = [];
+            const intensity = Math.min(day / 30, 3); // 0-3 scale
+            
+            const baseExercises = [
+                { name: 'Shadow Pushups', base: 10, unit: 'reps' },
+                { name: 'Dungeon Squats', base: 15, unit: 'reps' },
+                { name: 'Monarch Lunges', base: 10, unit: 'reps each leg' },
+                { name: 'Arise Burpees', base: 5, unit: 'reps' },
+                { name: 'Shadow Plank', base: 30, unit: 'seconds' },
+                { name: 'Dungeon Mountain Climbers', base: 20, unit: 'reps' },
+                { name: 'Monarch Jumping Jacks', base: 30, unit: 'reps' },
+                { name: 'Arise High Knees', base: 40, unit: 'reps' },
+                { name: 'Shadow Bicycle Crunches', base: 20, unit: 'reps' },
+                { name: 'Monarch Cooldown Stretch', base: 5, unit: 'minutes' }
+            ];
+
+            baseExercises.forEach((ex, index) => {
+                const multiplier = 1 + (intensity * 0.5); // Progressive difficulty
+                const amount = Math.floor(ex.base * multiplier);
+                exercises.push({
+                    id: index + 1,
+                    name: ex.name,
+                    amount: amount,
+                    unit: ex.unit,
+                    completed: false
+                });
+            });
+
+            return exercises;
+        }
+
+        // State Management
+        let userData = {
+            name: '',
+            hunterName: '',
+            age: 0,
+            weight: 0,
+            height: 0,
+            gender: '',
+            currentCharacter: null,
+            currentDay: 1,
+            completedDays: [],
+            totalExercises: 0,
+            unlockedCharacters: []
+        };
+
+        let selectedGender = '';
+
+        // Functions
+        function showLogin() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function selectGender(gender) {
+            selectedGender = gender;
+            document.querySelectorAll('.gender-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            userData.name = document.getElementById('realName').value;
+            userData.hunterName = document.getElementById('hunterName').value;
+            userData.age = parseInt(document.getElementById('age').value);
+            userData.weight = parseInt(document.getElementById('weight').value);
+            userData.height = parseInt(document.getElementById('height').value);
+            userData.gender = selectedGender;
+
+            if (!selectedGender) {
+                alert('Please select your gender');
+                return;
+            }
+
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('heroSection').style.display = 'none';
+            document.getElementById('characterSection').classList.add('active');
+            document.getElementById('navBar').style.display = 'flex';
+            
+            renderCharacters();
+            generateDietPlan();
+        });
+
+        function renderCharacters(filter = 'all') {
+            const grid = document.getElementById('charactersGrid');
+            grid.innerHTML = '';
+            
+            const genderChars = characters[userData.gender];
+            let charsToShow = [];
+            
+            if (filter === 'all' || filter === 'normal') {
+                charsToShow = [...charsToShow, ...genderChars.normal];
+            }
+            if (filter === 'all' || filter === 'sss') {
+                charsToShow = [...charsToShow, ...genderChars.sss];
+            }
+
+            charsToShow.forEach(char => {
+                const card = document.createElement('div');
+                card.className = 'character-card fade-in';
+                card.onclick = () => selectCharacter(char);
+                
+                card.innerHTML = `
+                    <div class="character-image">
+                        ${char.emoji}
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">${char.name}</div>
+                        <div class="character-rank ${char.rank.toLowerCase()}">${char.rank}-Rank</div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function filterRank(rank) {
+            document.querySelectorAll('.rank-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            renderCharacters(rank);
+        }
+
+        function selectCharacter(char) {
+            userData.currentCharacter = char;
+            userData.currentDay = 1;
+            
+            document.getElementById('characterSection').classList.remove('active');
+            document.getElementById('trainingSection').classList.add('active');
+            
+            document.getElementById('trainingAvatar').textContent = char.emoji;
+            document.getElementById('trainingCharName').textContent = char.name;
+            document.getElementById('trainingCharRank').textContent = `${char.rank}-Rank Trainer`;
+            
+            renderDays();
+        }
+
+        function renderDays() {
+            const grid = document.getElementById('daysGrid');
+            grid.innerHTML = '';
+            
+            for (let i = 1; i <= 90; i++) {
+                const dayCard = document.createElement('div');
+                dayCard.className = 'day-card';
+                
+                if (i < userData.currentDay) {
+                    dayCard.classList.add('completed');
+                } else if (i === userData.currentDay) {
+                    dayCard.classList.add('current');
+                } else {
+                    dayCard.classList.add('locked');
+                }
+                
+                dayCard.onclick = () => {
+                    if (i === userData.currentDay) {
+                        openDay(i);
+                    }
+                };
+                
+                dayCard.innerHTML = `
+                    <div class="day-number">Day ${i}</div>
+                    <div class="day-status">${i < userData.currentDay ? '✓ Done' : i === userData.currentDay ? 'Current' : '🔒'}</div>
+                `;
+                
+                grid.appendChild(dayCard);
+            }
+            
+            const progress = (userData.currentDay / 90) * 100;
+            document.getElementById('dayProgress').style.width = `${progress}%`;
+            document.getElementById('currentDay').textContent = `Day ${userData.currentDay} of 90`;
+        }
+
+        function openDay(day) {
+            const exercises = generateExercises(userData.currentCharacter.name, day);
+            document.getElementById('exerciseDayTitle').textContent = `Day ${day} Training - ${userData.currentCharacter.name}`;
+            document.getElementById('exerciseProgress').textContent = `Complete all 10 exercises`;
+            
+            const list = document.getElementById('exerciseList');
+            list.innerHTML = '';
+            
+            exercises.forEach((ex, index) => {
+                const item = document.createElement('div');
+                item.className = 'exercise-item';
+                item.id = `ex-${index}`;
+                
+                item.innerHTML = `
+                    <div class="exercise-number">${index + 1}</div>
+                    <div class="exercise-info">
+                        <div class="exercise-name">${ex.name}</div>
+                        <div class="exercise-details">${ex.amount} ${ex.unit}</div>
+                    </div>
+                    <button class="exercise-action" onclick="completeExercise(${index})" id="btn-${index}">
+                        Start
+                    </button>
+                `;
+                
+                list.appendChild(item);
+            });
+            
+            document.getElementById('exerciseModal').classList.add('active');
+        }
+
+        function completeExercise(index) {
+            const btn = document.getElementById(`btn-${index}`);
+            const item = document.getElementById(`ex-${index}`);
+            
+            btn.textContent = '✓ Done';
+            btn.disabled = true;
+            item.classList.add('completed');
+            
+            userData.totalExercises++;
+            
+            // Check if all exercises completed
+            const allCompleted = document.querySelectorAll('.exercise-item.completed').length === 10;
+            if (allCompleted) {
+                setTimeout(() => {
+                    completeDay();
+                }, 500);
+            }
+        }
+
+        function completeDay() {
+            userData.completedDays.push(userData.currentDay);
+            userData.currentDay++;
+            
+            if (userData.currentDay > 90) {
+                alert(`🎉 Congratulations! You've completed ${userData.currentCharacter.name}'s 90-day training!`);
+                userData.unlockedCharacters.push(userData.currentCharacter);
+                userData.currentCharacter = null;
+                userData.currentDay = 1;
+                showSection('characters');
+            } else {
+                alert(`✅ Day ${userData.currentDay - 1} Complete! Day ${userData.currentDay} unlocked!`);
+                closeExerciseModal();
+                renderDays();
+            }
+            
+            updateProfile();
+        }
+
+        function closeExerciseModal() {
+            document.getElementById('exerciseModal').classList.remove('active');
+        }
+
+        function generateDietPlan() {
+            const dietGrid = document.getElementById('dietGrid');
+            const bmi = userData.weight / ((userData.height/100) ** 2);
+            const goal = bmi > 25 ? 'Weight Loss' : bmi < 18.5 ? 'Weight Gain' : 'Maintenance';
+            
+            const meals = [
+                { icon: '🌅', title: 'Breakfast', content: `High protein breakfast - 4 egg whites, oats with banana, green tea. Target: 400-500 calories` },
+                { icon: '☀️', title: 'Mid-Morning', content: `Protein shake with peanut butter or handful of almonds. Target: 200 calories` },
+                { icon: '🍽️', title: 'Lunch', content: `Grilled chicken breast (200g), brown rice, mixed vegetables. Target: 600-700 calories` },
+                { icon: '🌙', title: 'Pre-Workout', content: `Banana with black coffee or pre-workout supplement. Target: 150 calories` },
+                { icon: '💪', title: 'Post-Workout', content: `Protein shake with creatine, simple carbs like white rice. Target: 300 calories` },
+                { icon: '🌃', title: 'Dinner', content: `Fish or lean meat, sweet potato, salad. Target: 500-600 calories` }
+            ];
+            
+            dietGrid.innerHTML = meals.map(meal => `
+                <div class="diet-card">
+                    <div class="diet-icon">${meal.icon}</div>
+                    <div class="diet-title">${meal.title}</div>
+                    <div class="diet-content">${meal.content}</div>
+                </div>
+            `).join('');
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            document.querySelectorAll('.character-section, .training-section, .diet-section, .profile-section').forEach(sec => {
+                sec.classList.remove('active');
+            });
+            
+            if (section === 'characters') {
+                document.getElementById('characterSection').classList.add('active');
+                renderCharacters();
+            } else if (section === 'training') {
+                if (userData.currentCharacter) {
+                    document.getElementById('trainingSection').classList.add('active');
+                    renderDays();
+                } else {
+                    document.getElementById('characterSection').classList.add('active');
+                    renderCharacters();
+                }
+            } else if (section === 'diet') {
+                document.getElementById('dietSection').classList.add('active');
+            } else if (section === 'profile') {
+                document.getElementById('profileSection').classList.add('active');
+                updateProfile();
+            }
+        }
+
+        function updateProfile() {
+            document.getElementById('profileName').textContent = userData.hunterName;
+            document.getElementById('profileStatsText').textContent = `Age: ${userData.age} | Weight: ${userData.weight}kg | Height: ${userData.height}cm`;
+            
+            const rank = userData.totalExercises > 1000 ? 'S' : userData.totalExercises > 500 ? 'A' : userData.totalExercises > 200 ? 'B' : userData.totalExercises > 50 ? 'C' : userData.totalExercises > 10 ? 'D' : 'E';
+            document.getElementById('profileRank').textContent = `${rank}-Rank Hunter`;
+            
+            document.getElementById('statDays').textContent = userData.completedDays.length;
+            document.getElementById('statExercises').textContent = userData.totalExercises;
+            document.getElementById('statCharacters').textContent = userData.unlockedCharacters.length;
+        }
+
+        // Save data to localStorage
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('redZoneData', JSON.stringify(userData));
+        });
+
+        // Load data from localStorage
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('redZoneData');
+            if (saved) {
+                userData = JSON.parse(saved);
+                if (userData.hunterName) {
+                    document.getElementById('heroSection').style.display = 'none';
+                    document.getElementById('navBar').style.display = 'flex';
+                    if (userData.currentCharacter) {
+                        document.getElementById('trainingSection').classList.add('active');
+                        renderDays();
+                    } else {
+                        document.getElementById('characterSection').classList.add('active');
+                        renderCharacters();
+                    }
+                    generateDietPlan();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
